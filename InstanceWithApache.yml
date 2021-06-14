@@ -1,0 +1,37 @@
+---
+Resources:
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable ssh + http for SG1
+      SecurityGroupIngress:
+      - CidrIp: 0.0.0.0/0
+        IpProtocol: tcp
+        FromPort: 22 
+        ToPort: 22
+      - CidrIp: 0.0.0.0/0
+        IpProtocol: tcp
+        FromPort: 80 
+        ToPort: 80
+      Tags:
+      - Key: Name
+        Value: SSH-HTTP
+
+  server1:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0b2ca94b5b49e0132  
+      InstanceType: t2.micro
+      SecurityGroups: 
+      - !Ref SecurityGroup
+      UserData:
+        Fn::Base64: |
+          #!/bin/bash -xe
+          yum update -y
+          yum install httpd -y
+          systemctl enable httpd
+          systemctl start httpd
+          echo "<h2>Coding Dojo</h2>" > /var/www/html/index.html
+      Tags:
+      - Key: Name
+        Value: WebServer

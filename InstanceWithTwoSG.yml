@@ -1,0 +1,40 @@
+---
+Parameters:
+  SecurityGroupDescription:
+    Description: SecurityGroupDescription
+    Type: String
+Resources: 
+  MyInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: us-west-1a
+      ImageId: ami-0b2ca94b5b49e0132
+      InstanceType: t2.micro
+      SecurityGroups:
+        - !Ref SecurityGroupMu1
+        - !Ref SecurityGroupMu2
+  ElasticIP: 
+    Type: AWS::EC2::EIP
+    Properties:
+      InstanceId: !Ref MyInstance
+  SecurityGroupMu1:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: EnableSSHAcsses
+      SecurityGroupIngress:
+      - CidrIp: 0.0.0.0/0
+        FromPort: 22 
+        IpProtocol: TCP
+        ToPort: 22
+  SecurityGroupMu2:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: !Ref SecurityGroupDescription
+      SecurityGroupIngress:
+      - IpProtocol: TCP
+        FromPort: 80
+        ToPort: 80 
+      - CidrIp: 0.0.0.0/0
+        FromPort: 22 
+        IpProtocol: TCP
+        ToPort: 22
