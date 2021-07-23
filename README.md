@@ -1,10 +1,11 @@
-# DevOps-AWS-CloudFormation
+# AWS-CloudFormation
+Speed up cloud provisioning with infrastructure as code. Get started with CloudFormation. AWS CloudFormation gives you an easy way to model a collection of related AWS and third-party resources, provision them quickly and consistently, and manage them throughout their lifecycles, by treating infrastructure as code.
 
-An introduction to AWS CloudFormation:
+GitHub repo: 
 
-1. Instance with two Security Groups 
-2. Instance with Apache Server 
-3. Two Instances with Apache Server
-4. Complete Infrastructure
+Tutorials:
+1. Instance with two Security Groups https://youtu.be/HOVxtrBnDhg
+2. Instance with Apache Server https://youtu.be/JFAPYb9Vy6g
+3. Two Instances with Apache Server https://youtu.be/JFAPYb9Vy6g
+4. Complete Infrastructure https://youtu.be/Z7toHA-DKaA
 
-Explanation: https://www.youtube.com/playlist?list=PLUy8DvyX4nDEUtYolW5K_wzqGa1t8ANrO
